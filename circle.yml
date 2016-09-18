@@ -4,8 +4,9 @@ machine:
 
 dependencies:
   override:
-    - docker info
-    - docker build --rm=false -t kalebksp/golang .
+    - pip install docker-squash
+    - docker build --rm=false -t golang-intermediate .
+    - docker-squash -f 11 -t kalebksp/golang golang-intermediate
 
 test:
   override:
