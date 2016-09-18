@@ -6,7 +6,7 @@ dependencies:
   override:
     - pip install docker-squash
     - docker build --rm=false -t golang-intermediate .
-    - docker-squash -f 11 -t kalebksp/golang golang-intermediate
+    - docker-squash -f 11 -t vcabbage/golang golang-intermediate
 
 test:
   override:
@@ -17,4 +17,4 @@ deployment:
     branch: master
     commands:
       - docker login -e $DOCKER_EMAIL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-      - docker push kalebksp/golang
+      - docker push vcabbage/golang
