@@ -17,14 +17,14 @@ As the image is based on the official [golang:latest](https://hub.docker.com/_/g
 
 ### Building a Specific Branch or Commit
 
-A specific branch or commit can be built by passing in the `branch` build arg.
+A specific branch or commit can be built by passing in the `checkout` build arg.
 
 ```
-$ docker build --build-arg branch=dev.ssa .
+$ docker build --build-arg checkout=dev.ssa .
 Sending build context to Docker daemon 133.6 kB
 Step 1 : FROM golang:latest
  ---> 002b233310bb
-Step 2 : ARG branch=master
+Step 2 : ARG checkout=master
  ---> Using cache
  ---> 2a53f12a1b34
 Step 3 : RUN git clone https://go.googlesource.com/go /tmp/go &&     cd /tmp/go/src &&     git checkout $branch &&     GOROOT_BOOTSTRAP=/usr/local/go GOROOT_FINAL=/usr/local/go ./make.bash &&     cd - &&     rm -rf /usr/local/go &&     rm -rf /tmp/go/.git* &&     mv /tmp/go /usr/local/go
