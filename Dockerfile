@@ -2,7 +2,9 @@ FROM golang:latest
 
 ARG branch=master
 
-RUN git clone https://go.googlesource.com/go /tmp/go && \
+RUN if [ "$branch" = "master" ]; \
+        then git clone --depth=1 https://go.googlesource.com/go /tmp/go; \
+        else git clone https://go.googlesource.com/go /tmp/go; fi && \
     cd /tmp/go/src && \
     git checkout $branch && \
     GOROOT_BOOTSTRAP=/usr/local/go GOROOT_FINAL=/usr/local/go ./make.bash && \
